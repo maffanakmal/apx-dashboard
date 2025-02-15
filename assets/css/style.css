@@ -65,37 +65,64 @@ li {
     list-style: none;
 }
 
-.main-wrapper {
-    display: flex;
-    position: relative;
+img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
-.main {
-    flex-grow: 1; /* Ensure it takes available space */
+/* .main-wrapper {
+    display: flex;
+    position: relative;
+} */
+
+/* .main {
+    flex-grow: 1;
     min-height: 100vh;
     width: 100%;
     overflow: hidden;
     transition: all 0.25s ease-in-out;
     background-color: var(--white-color);
-    position: relative; /* Keep it under the sidebar */
-    z-index: 1; /* Lower z-index than sidebar */
+    position: relative;
+    z-index: 1;
+} */
+
+.main-wrapper {
+    display: flex;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    transition: all .25s ease-in-out;
+    background-color: var(--white-color);
 }
 
 #sidebar {
+    width: 90px;
+    min-width: 90px;
+    transition: all .25s ease-in-out;
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+}
+
+/* #sidebar {
     width: 0;
     min-width: 0;
     transition: all 0.25s ease-in-out;
     background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
-    
-    /* Ensure sidebar is positioned properly */
-    position: absolute; /* Position it absolutely */
+    position: absolute;
     left: 0;
     top: 0;
-    height: 100vh; /* Full height */
+    height: 100vh;
     z-index: 10;
-}
+} */
 
 #sidebar.active {
     width: 300px;
@@ -103,7 +130,6 @@ li {
 }
 
 #sidebar:not(.active) .sidebar-logo,
-#sidebar:not(.active) .sidebar-item,
 #sidebar:not(.active) a.sidebar-link span {
     display: none;
 }
@@ -184,7 +210,7 @@ a.sidebar-link:hover {
     display: none;
 }
 
-#sidebar:not(.active) .sidebar-item:hover .has-dropdown+.sidebar-dropdown{
+#sidebar:not(.active) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
     display: block;
     max-height: 15em;
     width: 100%;
@@ -195,7 +221,7 @@ a.sidebar-link:hover {
     left: 130px;
 }
 
-#sidebar.active .sidebar-link[data-toggle="collapse"]::after {
+/* #sidebar.active .sidebar-link[data-toggle="collapse"]::after {
     border: solid;
     border-width: .075rem .075rem 0;
     content: "";
@@ -211,13 +237,21 @@ a.sidebar-link:hover {
 #sidebar.active .sidebar-link[data-toggle="collapse"].collapsed::after {
     transform: rotate(45deg);
     transition: all .25s ease-in-out;
+} */
+
+.rotate {
+    transition: 0.3s ease;
 }
 
-/* .sidebar-dropdown .sidebar-link {
+.sidebar-link[aria-expanded="true"] .rotate {
+    transform: rotate(180deg);
+}
+
+.sidebar-dropdown .sidebar-link {
     position: relative;
     padding-left: 3rem;
     transition: all .5s ease-in-out;
-} */
+}
 
 /* .sidebar-dropdown a.sidebar-link::before {
     content: "";
@@ -248,8 +282,8 @@ a.sidebar-link:hover {
 }
 
 .avatar {
-    height: 40px;
-    width: 40px;
+    height: 46px;
+    width: 46px;
     border-radius: 50%;
 }
 
@@ -268,8 +302,7 @@ a.sidebar-link:hover {
     color: gray;
 }
 
-
-/* .card {
+.card {
     background-color: var(--white-color);
     transition: .4s;
     cursor: pointer;
@@ -277,7 +310,7 @@ a.sidebar-link:hover {
     margin-bottom: 1rem;
     border-color: rgba(231, 234, 247, .7);
 }
-
+/*
 .card h6 {
     text-transform: uppercase;
     font-size: .7161rem;
@@ -292,4 +325,42 @@ a.sidebar-link:hover {
 
 .content {
     flex: 1 1 auto;
+}
+
+@media (max-width: 768px) {
+    .main-wrapper {
+        display: flex;
+        position: relative;
+    }
+
+    .main {
+        flex-grow: 1;
+        min-height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        transition: all 0.25s ease-in-out;
+        background-color: var(--white-color);
+        position: relative;
+        z-index: 1;
+    }
+
+    #sidebar {
+        width: 0;
+        min-width: 0;
+        transition: all 0.25s ease-in-out;
+        background-color: var(--primary-color);
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        z-index: 10;
+    }
+
+    #sidebar:not(.active) .sidebar-logo,
+    #sidebar:not(.active) .sidebar-item,
+    #sidebar:not(.active) a.sidebar-link span {
+        display: none;
+    }
 }
