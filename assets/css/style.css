@@ -71,6 +71,13 @@ img {
     object-fit: cover;
 }
 
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+    box-shadow: none;
+    border-color: #ccc;
+}
+
 .main-wrapper {
     display: flex;
 }
@@ -248,6 +255,10 @@ a.sidebar-link:hover {
 
 .content {
     flex: 1 1 auto;
+}
+
+.box-area {
+    width: 930px;
 }
 
 @media (max-width: 768px) {
